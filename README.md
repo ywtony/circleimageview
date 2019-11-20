@@ -98,6 +98,9 @@ public class MainActivity extends Activity {
     </RelativeLayout>
 </LinearLayout>
 
+
+
+![测试结果](https://github.com/ywtony/circleimageview/blob/master/app/src/main/demo_image.jpeg)
   
   
 
