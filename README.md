@@ -14,11 +14,10 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.ywtony:circleimageview:v0.1'
 	}
-
-
 使用方法：
 
 public class MainActivity extends Activity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +39,9 @@ public class MainActivity extends Activity {
                 .into(imageView);
     }
 }
-  
-  
-  
-  
+	
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -53,7 +50,7 @@ public class MainActivity extends Activity {
     android:background="#000000"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
+    
     <com.yw.customimageview.CircleImageView
         android:id="@+id/imageview"
         android:layout_width="100dp"
@@ -63,17 +60,14 @@ public class MainActivity extends Activity {
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="29dp"
         tools:layout_editor_absoluteY="294dp" />
-
     <com.yw.customimageview.HCircleRelativeLayout
         android:id="@+id/h_rel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <com.yw.customimageview.CircleImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
