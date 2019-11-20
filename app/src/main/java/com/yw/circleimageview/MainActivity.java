@@ -3,10 +3,14 @@ package com.yw.circleimageview;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.yw.customimageview.CircleImageView;
 import com.yw.customimageview.HCircleRelativeLayout;
 
@@ -33,6 +37,18 @@ public class MainActivity extends Activity {
                 .addHeader("User-Agent", "Mozilla/5.0 (android) GoogleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36")
                 .build());
         Glide.with(this).load(glideUrl).placeholder(R.mipmap.ic_launcher)
-                .into(imageView);
+                .listener(new RequestListener<GlideUrl, GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, GlideUrl model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        Log.e("Excepton:",e.getMessage());
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, GlideUrl model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        Log.e("Excepton:","执行成功");
+                        return false;
+                    }
+                }).into(imageView);
     }
 }
