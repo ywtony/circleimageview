@@ -3,52 +3,74 @@ package com.yw.circleimageview;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.model.GlideUrl;
-import com.bumptech.glide.load.model.LazyHeaders;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.yw.customimageview.CircleImageView;
-import com.yw.customimageview.HCircleRelativeLayout;
+import com.yw.customimageview.FoldImageViewLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 测试入口
+ *
+ * @author yangwei
+ */
 public class MainActivity extends Activity {
+    private List<String> datas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        CircleImageView imageView =findViewById(R.id.imageview);
-        List<String> datas = new ArrayList<>();
-        datas.add("http://pic26.nipic.com/20121229/9252150_101013018353_2.jpg");
-        datas.add("http://b-ssl.duitang.com/uploads/blog/201509/26/20150926184102_ZXtPh.jpeg");
-        datas.add("http://pic19.nipic.com/20120302/6647776_211749086000_2.jpg");
-        datas.add("http://pic26.nipic.com/20130129/9252150_095222158122_2.jpg");
-        datas.add("http://pic77.nipic.com/file/20150909/9448607_165423679000_2.jpg");
-        HCircleRelativeLayout relativeLayout = findViewById(R.id.h_rel);
-        relativeLayout.setConfig(2, 200, R.mipmap.ic_launcher);
-        relativeLayout.setList(datas);
-        GlideUrl glideUrl = new GlideUrl(datas.get(0), new LazyHeaders.Builder()
-                .addHeader("User-Agent", "Mozilla/5.0 (android) GoogleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36")
-                .build());
-        Glide.with(this).load(glideUrl).placeholder(R.mipmap.ic_launcher)
-                .listener(new RequestListener<GlideUrl, GlideDrawable>() {
-                    @Override
-                    public boolean onException(Exception e, GlideUrl model, Target<GlideDrawable> target, boolean isFirstResource) {
-                        Log.e("Excepton:",e.getMessage());
-                        return false;
-                    }
+        initData();
+        loadImage();
+        loadHFirstImageLayout();
+        loadHLastImageLayout();
+        loadVFirstImageLayout();
+        loadVLastImageLayout();
+    }
 
-                    @Override
-                    public boolean onResourceReady(GlideDrawable resource, GlideUrl model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                        Log.e("Excepton:","执行成功");
-                        return false;
-                    }
-                }).into(imageView);
+    private void initData() {
+        datas = Utils.getImagData();
+    }
+
+    /**
+     * 加载第一个图片完整显示的布局
+     */
+    private void loadHFirstImageLayout() {
+        FoldImageViewLayout relativeLayout = findViewById(R.id.h_first_rel);
+        relativeLayout.setList(datas);
+    }
+
+    /**
+     * 加载最后一张图片完整显示的布局
+     */
+    private void loadHLastImageLayout() {
+        FoldImageViewLayout relativeLayout = findViewById(R.id.h_last_rel);
+        relativeLayout.setList(datas);
+    }
+
+    /**
+     * 加载纵向第一个图片完整显示的布局
+     */
+    private void loadVFirstImageLayout() {
+        FoldImageViewLayout relativeLayout = findViewById(R.id.v_first_rel);
+        relativeLayout.setList(datas);
+    }
+
+    /**
+     * 加载纵向最后一个完整显示的布局
+     */
+    private void loadVLastImageLayout() {
+        FoldImageViewLayout relativeLayout = findViewById(R.id.v_last_rel);
+        relativeLayout.setList(datas);
+    }
+
+    /**
+     * 加载单张圆形图片
+     */
+    private void loadImage() {
+        CircleImageView imageView = findViewById(R.id.imageview);
+        Utils.loadImage(this, imageView, datas.get(0));
     }
 }

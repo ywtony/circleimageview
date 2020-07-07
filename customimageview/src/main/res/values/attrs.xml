@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    折叠图片布局-->
+    <declare-styleable name="FoldImageViewLayout">
+        <!--        图片宽高-->
+        <attr name="imageWidth" format="dimension" />
+        <!--        填充，分为做填充和上填充-->
+        <attr name="margin" format="dimension" />
+        <!--     是否是第一张图片显示完全，true：是，false最后一张显示完全   -->
+        <attr name="isFirstShow" format="boolean" />
+        <!--        true横向布局，false纵向布局-->
+        <attr name="isHLayout" format="boolean" />
+        <!--        默认图标-->
+        <attr name="defaultIcon" format="reference" />
+    </declare-styleable>
+</resources>
