@@ -14,18 +14,18 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.ywtony:circleimageview:v0.1'
 	}
+	
 使用方法：
-
- /**
-     * 加载第一个图片完整显示的布局
+```
+	/** 
+     * 加载第一个图片完整显示的布局 
      */
     private void loadHFirstImageLayout() {
         FoldImageViewLayout relativeLayout = findViewById(R.id.h_first_rel);
         relativeLayout.setList(datas);
     }
     
-    
-  <com.yw.customimageview.FoldImageViewLayout
+     <com.yw.customimageview.FoldImageViewLayout
             android:id="@+id/h_first_rel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,10 @@ Step 2. Add the dependency
             app:isHLayout="true"
             app:margin="80dp"
             tools:ignore="MissingConstraints">
-
+```
+    
+   
+ 
 
 
 ![测试结果](https://github.com/ywtony/circleimageview/blob/master/app/src/main/demo_image.jpeg)
